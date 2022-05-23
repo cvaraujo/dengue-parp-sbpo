@@ -1,20 +1,25 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage{sbpo-template}
-\usepackage[brazil]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{url}
 \usepackage[square]{natbib}
 \usepackage{indentfirst}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage[acronym]{glossaries}
 \pagestyle{fancy}
+\usepackage{tikz}
 \fancyhf{}
 \fancyhead[C]{\includegraphics[width=\textwidth]{cabecalho_sbpo.png}}
 \renewcommand{\headrulewidth}{0pt}
 \setlength\headheight{101.0pt}
 \addtolength{\textheight}{-101.0pt}
 \setlength{\headsep}{-5mm}
+
+\newacronym{ew}{EW}{Epidemiological Week}
+\newacronym{parp}{PARP}{Prize-collecting Arc Routing Problem}
 
 \begin{document}
 
@@ -24,7 +29,7 @@
 \thispagestyle{fancy}
 
 \author{
-\name{Carlos V. D. Araújo}
+\name{Carlos V. D. Araujo}
 \institute{Filia\c c\~ao}
 \iaddress{Endere\c co da Institui\c c\~ao}
 \email{e-mail}
@@ -72,23 +77,153 @@ First keyword. Second keyword. Last keyword.
 
  
 \newpage
-\section{Introdu\c{c}\~ao} 
- 
-A primeira p\'agina dos trabalhos publicados ser\'a constitu\'\i da com as informa\c c\~oes fornecidas
-no formul\'ario de submiss\~ao de trabalho.
-Por isto, os nomes de \textbf {todos} os autores devem ser cadastrados nesse formul\'ario.
-Os nomes que n\~ao sejam informados nesse formul\'ario n\~ao aparecer\~ao entre os autores
-na programa\c c\~ao do Simp\'osio nem nos Anais.
+\section{Introduction}
 
 
-No campo \textit{Paper Title} deve ser informado apenas o t\'\i tulo do trabalho,
-\textbf{ sem qualquer identifica\-\c c\~ao dos autores ou suas institui\c c\~oes}.
+According to the Pan American Health Organization  (PAHO), in the year of 2021 a
+total  of  1.324.108  cases  of  arbivoral diseases  were  reported.  Of  those,
+1.173.674 ($89\%$) were dengue cases, 131.630 were chikungunya cases, and 18.844
+were Zika cases. Between the \gls{ew} 1 and  the \gls{ew} 19 of 2022, a total of
+1.279.724 arbivoral  disease already been  reported, in which Brazil  appears in
+first position as the country with  the largest number of dengue reported cases,
+achieving a total of 1.114.758 ($90.9\%$) \citep{paho-1}.
 
-O campo \textit{Paper Abstract} dever\'a ser preenchido com o Resumo, de \textbf{no m\'aximo 150 palavras},
-seguido por 3 palavras-chave e pelo(s) nome(s) da(s) \'area(s) de classifica\c c\~ao principal do trabalho escolhida(s) 
-entre aquelas assinaladas no campo \textit{ Paper Topics} (ordenadas em ordem de prioridade). 
-A seguir, no caso de resumos escritos em portugu\^es ou espanhol, dever\'a vir o Abstract em ingl\^es
-e as \textit{keywords}, traduzindo fielmente o Resumo e as palavras-chave. 
+The prevention, control and combat of diseases caused by arboviruses, especially
+dengue, has been the  subject of great concern worldwide, as  it is a reemerging
+disease caused  by the transmission of  Den 1, Den 2,  Den 3, and Den  4 viruses
+through the {\em Aedes aegypt} and {\em Aedes albopictus}, which proliferates in
+the tropical regions  of the world, comprising more than  1.8 billions of people
+susceptible to being infected \citep{negreiros-2020}.
+
+The dengue virus needs a biological vector to be transmitted. The control of the
+mosquito can be done in two  ways: eliminating adult mosquitoes, and eliminating
+the larval  breeding grounds. In addition  to precaution, where the  focus is to
+make the population aware and eliminate  possible recipients that could serve as
+breeding grounds for mosquitoes, chemical  control is used. The chemical control
+consists in the  use of chemical substances (insecticide) for  vector control in
+the larval and adult stages.
+
+The use of  insecticides in public health is based  on technical and operational
+standards derived  from a  group of  experts in pesticides  of the  World Health
+Organization (WHO), which recommends the  active ingredients of the products and
+recommends the doses for the various types of available treatments. The rational
+and  safe use  in  vector  control activities  is  essential,  given that  their
+indiscriminate use  determines environmental impacts, in  addition of developing
+vector resistance  to the products.  An emergency  approach to reduce  the adult
+mosquito  population, used  in case  of epidemics  or endemics  mainly in  urban
+areas,  is to  apply insecticide  using a  nebulizer attached  to vehicles,  see
+Figure \ref{fig:nebulizer}.
+
+\begin{figure}[!ht]
+  \centering
+    \includegraphics[scale=0.4]{fumace.jpg}
+    \caption{Nebulizer equipment attached to vehicle. }
+    \label{fig:nebulizer}
+\end{figure}
+
+Nebulizer attached to vehicles are very  useful for the control of outbreaks and
+epidemics, due to its high performance (80 to 160 blocks per day), however it is
+not recommended  in transmission  block situations.  These applications  must be
+constantly  supervised to  guarantee the  indicated insecticide  dosage in  each
+visited  block, since  there is  a series  of operational  factors, such  as the
+equipment flow,  and vehicle speed \citep{brasil-dept-helth:2009}.  In order for
+the applications  to have the  desired effectiveness, it  must be realized  in a
+period with correct conditions to maintain the insecticide cloud moving close to
+the ground.  The thermal inversion is  generally produced in the  morning, after
+the sunrise, and in the afternoon, just before sunset, these moments are optimal
+to apply the insecticide with the nebulizer vehicle.
+
+The  nebulized insecticide  doesn't  have  residual effect  and  it is  strongly
+influenced  by  wind.  The  best  results  are  achieved  when  the  most  dense
+insecticide cloud is  at a distance of  up to 100 meters from  the equipment. As
+this  distance is  crossed, the  effectiveness  decreases, as  a consequence  of
+droplet drift influenced  by factor of the environment. The  cloud dispersion is
+illustrated in Figure \ref{fig:dispersion}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.4]{cloud-dispersion.png}
+  \caption{Cloud dispersion of the application.}
+  \label{fig:dispersion}
+\end{figure}
+
+The instructions about the insecticide application method are generally based on
+the  ideal conditions  of topology,  structure  of the  locality, and  favorable
+winds. The  operation is often harmed  by unpaved roads, presence  of walls, and
+high  vegetation,  in  additions  to   headwinds.  Such  this,  the  application
+methodology must  consider these limitations  in order  to obtain a  good impact
+over the  vector population. The  vehicle must  travel around each  block before
+starting the next one, as show in Figure \ref{fig:travel-pattern}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.25]{visit-pattern.jpg}
+  \caption{Vehicle pattern with nebulizer.}
+  \label{fig:travel-pattern}
+\end{figure}
+
+
+In this work, we address the problem  of create routes to the nebulizer vehicles
+as a \gls{parp}. \gls{parp}s are arc  routing problems where, in addition to the
+cost functions, there is a profit function  that must be taken into account when
+an arc is serviced \citep{araoz:2006}.
+
+
+% Temporary
+The complexity of the process of prevention and control of the disease is large,
+involving only  in Brazil,  annual expenses exceeding  R$\$$ 1.6  billions. Such
+resources could be  better used if the dengue logistics  was more effective, and
+use the resources of Operations Research (OR).
+
+\section{Prize Collecting Formulation} \label{sec:formulation}
+
+\begin{itemize}
+    \item Schedule: 2 horas before or after the sunrise and 2 hours before or after the sundown. Total of 8 hours per day;
+    \item A minimum geometric distance of 150 meters (radius) from the notified case; 
+    \item Grouping the cases of a area, preferably for a period of two weeks. Considering the probable life expectancy of the infected adult female;
+    \item 3 or 5 applications cycle in the same area, each cycle with three or five days. If necessary, the application can be carried out for two more cycles;
+    \item The recommended velocity of the vehicle is 15km/h, but adjusting the flow of the nebulizer, the velocity can variate from 10km/h to 16km/h;
+    \item Normal block 400m, 100m for each street;
+    \item The insecticide must be made on the day of application, or up to 24 hours before.
+\end{itemize}
+
+\subsection{Parameters}
+\begin{itemize}
+    \item $p_b$: the sum of all notified cases in the block;
+    \item $d_0$ and $d_1$: are deposits to start and finish the route;
+    \item $f^T_{ij}$ and $f^t_{b}$: are the time used to visit the arc $(i, j)$ and the block $b$;
+    \item $f^i_{b}$: is the amount of insecticide to serve a block;
+    \item $T_{max}$: is the time limit;
+    \item $I_{max}$: is the insecticide limit.
+\end{itemize}
+
+
+\subsection{Variables}
+
+\begin{align}
+  \nonumber x_{ij} = & \begin{cases}
+                         1, & \text{If the arc $(i, j)$ belongs to the route,} \\
+                         0, & \text{CC} 
+                       \end{cases} & \forall (i, j) \in A'. \\
+  \nonumber y_{ib} = & \begin{cases}
+                         1, & \text{If the vertex $i$ are used as start to attend the block $b$,} \\
+                         0, & \text{CC} 
+                       \end{cases} & \forall i \in V', b \in B.
+\end{align}
+
+
+\begin{align}
+  \max & \sum_{i \in V'} \sum_{b \in B} p_b y_{ib} & \\
+       & \sum_{j \in V'\backslash \{t\}} x_{sj} = 1, & \\
+       & \sum_{j \in V'\backslash \{s\}} x_{jt} = 1, & \\
+       & \sum_{j \in V'} x_{ji} - \sum_{j \in V'} x_{ij} = 0, & \ \forall i \in V' \backslash \{s, t\} \\
+       & \sum_{(i, j) \in (S, \bar{S})} x_{ij} \geq y_{ib}, & \ \forall S \subset V, i \in S, b \in B(i) \\
+       & \sum_{(i, j) \in A'} f^T_{ij} x_{ij} + \sum_{i \in V'} \sum_{b \in B} f^T_b y_{ib} \leq T_{\max}, & \\
+       & \sum_{i \in V'} \sum_{b \in B} f^I_b y_{ib} \leq I_{\max}, & \\
+       & \sum_{i \in V(b)} y_{ib} \leq 1, & \ \forall b \in B, \\
+       & \sum_{(i, j) \in A'} x_{ji} \geq y_{ib}, & \ \forall i \in V(b), b \in B.
+\end{align}
+
 
 
 \section{Submiss\~ao do Texto Completo}
