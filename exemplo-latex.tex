@@ -20,6 +20,9 @@
 
 \newacronym{ew}{EW}{Epidemiological Week}
 \newacronym{parp}{PARP}{Prize-collecting Arc Routing Problem}
+\newacronym{dparp}{Dengue-PARP}{Dengue Prize-collecting Arc Routing Problem}
+\newacronym{ilp}{ILP}{Integer Linear Programming}
+\newacronym{ml}{ML}{Machine Learning}
 
 \begin{document}
 
@@ -163,17 +166,44 @@ starting the next one, as show in Figure \ref{fig:travel-pattern}.
 \end{figure}
 
 
-In this work, we address the problem  of create routes to the nebulizer vehicles
-as a \gls{parp}. \gls{parp}s are arc  routing problems where, in addition to the
-cost functions, there is a profit function  that must be taken into account when
-an arc is serviced \citep{araoz:2006}.
-
-
-% Temporary
 The complexity of the process of prevention and control of the disease is large,
-involving only  in Brazil,  annual expenses exceeding  R$\$$ 1.6  billions. Such
-resources could be  better used if the dengue logistics  was more effective, and
-use the resources of Operations Research (OR).
+involving  only  in  Brazil,  annual   expenses  exceeding  R$\$$  1.6  billions
+\citep{negreiros-2020}.  Such  resources could  be  better  used if  the  dengue
+logistics was more  effective, and use the resources of  operations research. To
+the best of our knowledge, we are  the first to introduce the \gls{dparp}, which
+is the problem of  create routes to the nebulizer vehicles  as a \gls{parp} with
+resource constraints. \gls{parp}s are arc routing problems where, in addition to
+the cost functions, there  is a profit function that must  be taken into account
+when an  arc is serviced  \citep{araoz:2006}. In  \gls{dparp}, each block  has a
+profit value that is related to the number of dengue cases, it is considered the
+block-vist pattern described in Figure \ref{fig:travel-pattern}, and we consider
+time and insecticide limitations. The goal of the \gls{dparp} is to maximize the
+profit  in  order  to nebulizer  a  region.  In  this  work, we  formulated  the
+\gls{dparp} using \gls{ilp}.
+
+This work is  organized as follows. In  the next section we present  a review of
+the literature ...
+
+
+\section{Related Work} \label{sec:related-work}
+
+An extensive number  of works in the  literature use \gls{ml} in  the context of
+dengue~\citep{shakurat:2015,shakil:2015,hair:2019,sarma:2020,appice:2020}. Some
+of  the main  problems  addressed are  generate dengue  diagnoses  based on  the
+patient's symptoms  and clinical patterns,  distinguish dengue and its  types in
+the early stage of disease progression  and, dengue fever predictions in certain
+regions  based on  a  set of  factors, such  as  precipitation, rain,  humidity,
+temperature, and others.
+
+\cite{bannwart-sbpo:2013,bannwart:2013}   proposed   numeric  techniques   using
+genetic  algorithm  to solve  the  control  model  applied  to the  problems  of
+combating dengue,  in which the  goal is to minimizes  the cost of  the chemical
+control  (insecticide) and  genetic  (liberating sterile  males  in the  natural
+environment). These works  assumes that the mortality rate of  the mosquitoes is
+strongly  related  to the  investment  in  control approaches.  The  experiments
+considered a time period  of 120 days and the results  indicated that the amount
+of insecticide used was high considering the other approaches cited in the work.
+
 
 \section{Prize Collecting Formulation} \label{sec:formulation}
 
