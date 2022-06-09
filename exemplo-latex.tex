@@ -253,56 +253,73 @@ to create routes for the vehicles with nebulizer, and the proposed algorithm was
 applied  in a  instance  corresponding  to the  location  of  Praia de  Iracema,
 Fortaleza.
 
-\section{Prize Collecting Formulation} \label{sec:formulation}
+\section{Mathematical Formulation for Dengue-PARP} \label{sec:formulation}
 
-\begin{itemize}
-    \item Schedule: 2 horas before or after the sunrise and 2 hours before or after the sundown. Total of 8 hours per day;
-    \item A minimum geometric distance of 150 meters (radius) from the notified case; 
-    \item Grouping the cases of a area, preferably for a period of two weeks. Considering the probable life expectancy of the infected adult female;
-    \item 3 or 5 applications cycle in the same area, each cycle with three or five days. If necessary, the application can be carried out for two more cycles;
-    \item The recommended velocity of the vehicle is 15km/h, but adjusting the flow of the nebulizer, the velocity can variate from 10km/h to 16km/h;
-    \item Normal block 400m, 100m for each street;
-    \item The insecticide must be made on the day of application, or up to 24 hours before.
-\end{itemize}
+Consider a weighted, connected, and directed graph $G = (V, E)$, being $V = \{1,
+\dots, n\}$ the  set of $n$ vertices, $E =  \{(i, j): i \text{ and }  j \in V, i
+\neq j\}$ the set of $m$ edges. A block, in the \gls{dparp}, can be defined as a
+cycle $c$ such that the edges $(i, j) \in C$ are in clockwise order. The set $B$
+contains all  blocks of the instance,  and each vertex  $i \in V$ belongs  to at
+least one  block, while each  edge $(i, j)  \in E$ is in  at most one  block. In
+order to allows the  route starts and end in any vertex of  $G$, it is necessary
+to change  $V$ to $V'$ by  adding an artificial  source vertex $s$ and  a target
+$t$. It is  also necessary add a set of  edges such that $E' = E  \cup \{(s, u),
+(u, t)\} \forall u in V$.
 
-\subsection{Parameters}
-\begin{itemize}
-    \item $p_b$: the sum of all notified cases in the block;
-    \item $d_0$ and $d_1$: are deposits to start and finish the route;
-    \item $f^T_{ij}$ and $f^t_{b}$: are the time used to visit the arc $(i, j)$ and the block $b$;
-    \item $f^i_{b}$: is the amount of insecticide to serve a block;
-    \item $T_{max}$: is the time limit;
-    \item $I_{max}$: is the insecticide limit.
-\end{itemize}
+Each edge of $G$ contains two associated values: number of notified dengue cases
+and distance in meters.  We set the \gls{dparp} entry as a  tuple ($G(V, E'), s,
+t, B, \lambda, \xi, f^T, f^I, \Delta_i, \Delta_t$), where each edge contains the
+values of  dengue cases ($\lambda$),  and distance ($\xi$). Consider  a function
+$f^T$ that,  with some  notation abuse,  compute the  time to  travel in  a edge
+($f^T_{(i, j)}$) and the  time to visit all the edges of  a block ($f^T_b$). The
+function $f^I_b$  compute the amount of  insecticide used in a  nebulized block.
+Lastly, consider the  maximum amount of insecticide  available ($\Delta_i$), and
+the maximum time of the route ($\Delta_t$).
 
+The computed  route can ignore the  cycles that make up  a block, i. e.,  if the
+model consider a block as nebulized the  route must contains at least one vertex
+from  the block  visited by  the  route. This  approach takes  advantage of  the
+nebulizer pulverization pattern presented for  this problem, that must cover all
+the  edger  before   move  to  nebulize  another  block.  Next,   we  present  a
+single-vehicle \gls{ilp} formulation for the \gls{dparp}.
 
-\subsection{Variables}
+\subsection{Single-vehicle ILP formulation}
 
 \begin{align}
   \nonumber x_{ij} = & \begin{cases}
                          1, & \text{If the arc $(i, j)$ belongs to the route,} \\
                          0, & \text{CC} 
-                       \end{cases} & \forall (i, j) \in A'. \\
+                       \end{cases} & \forall (i, j) \in E'. \\
   \nonumber y_{ib} = & \begin{cases}
-                         1, & \text{If the vertex $i$ are used as start to attend the block $b$,} \\
+                         1, & \text{If the vertex $i$ are used as start to nebulize the block $b$,} \\
                          0, & \text{CC} 
                        \end{cases} & \forall i \in V', b \in B.
 \end{align}
 
 
 \begin{align}
-  \max & \sum_{i \in V'} \sum_{b \in B} p_b y_{ib} & \\
-       & \sum_{j \in V'\backslash \{t\}} x_{sj} = 1, & \\
-       & \sum_{j \in V'\backslash \{s\}} x_{jt} = 1, & \\
-       & \sum_{j \in V'} x_{ji} - \sum_{j \in V'} x_{ij} = 0, & \ \forall i \in V' \backslash \{s, t\} \\
-       & \sum_{(i, j) \in (S, \bar{S})} x_{ij} \geq y_{ib}, & \ \forall S \subset V, i \in S, b \in B(i) \\
-       & \sum_{(i, j) \in A'} f^T_{ij} x_{ij} + \sum_{i \in V'} \sum_{b \in B} f^T_b y_{ib} \leq T_{\max}, & \\
+  \max & \sum_{i \in V'} \sum_{b \in B} \lambda_b y_{ib} - \sum_{ij \in E'} x_{ij} & \label{eq:of}\\
+       & \sum_{j \in V'\backslash \{t\}} x_{sj} = 1, & \label{eq:s-all} \\
+       & \sum_{j \in V'\backslash \{s\}} x_{jt} = 1, & \label{eq:all-t} \\
+       & \sum_{j: (i, j) \in E'} x_{ji} - \sum_{j: (i, j) \in E'} x_{ij} = 0, & \ \forall i \in V' \backslash \{s, t\} \label{eq:flow-conservation} \\
+       % & \sum_{(i, j) \in (S, \bar{S})} x_{ij} \geq y_{ib}, & \ \forall S \subset V, i \in S, b \in B(i) \\
+       & \sum_{(i, j) \in A'} f^T_{ij} x_{ij} + \sum_{i \in V} \sum_{b \in B} f^T_b y_{ib} \leq T_{\max}, & \\
        & \sum_{i \in V'} \sum_{b \in B} f^I_b y_{ib} \leq I_{\max}, & \\
        & \sum_{i \in V(b)} y_{ib} \leq 1, & \ \forall b \in B, \\
        & \sum_{(i, j) \in A'} x_{ji} \geq y_{ib}, & \ \forall i \in V(b), b \in B.
 \end{align}
 
 
+\begin{itemize}
+\item Schedule: 2 horas before or after the sunrise and 2 hours before or after the sundown. Total of 8 hours per day;
+\item A minimum geometric distance of 150 meters (radius) from the notified case; 
+\item Grouping the cases of a area, preferably for a period of two weeks. Considering the probable life expectancy of the infected adult female;
+\item 3 or 5 applications cycle in the same area, each cycle with three or five days. If necessary, the application can be carried out for two more cycles;
+\item The recommended velocity of the vehicle is 15km/h, but adjusting the flow of the nebulizer, the velocity can variate from 10km/h to 16km/h;
+\item Normal block 400m, 100m for each street;
+\item The insecticide must be made on the day of application, or up to 24 hours
+  before.
+\end{itemize}
 
 \section{Submiss\~ao do Texto Completo}
 
