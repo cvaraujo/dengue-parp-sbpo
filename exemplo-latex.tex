@@ -290,23 +290,23 @@ single-vehicle \gls{ilp} formulation for the \gls{dparp}.
                          1, & \text{If the arc $(i, j)$ belongs to the route,} \\
                          0, & \text{CC} 
                        \end{cases} & \forall (i, j) \in E'. \\
-  \nonumber y_{ib} = & \begin{cases}
-                         1, & \text{If the vertex $i$ are used as start to nebulize the block $b$,} \\
+  \nonumber y_{b} = & \begin{cases}
+                         1, & \text{If the block $b$ is nebulized,} \\
                          0, & \text{CC} 
-                       \end{cases} & \forall i \in V', b \in B.
+                       \end{cases} & \forall b \in B.
 \end{align}
 
 
 \begin{align}
-  \max & \sum_{i \in V'} \sum_{b \in B} \lambda_b y_{ib} - \sum_{ij \in E'} x_{ij} & \label{eq:of}\\
+  \max & \sum_{b \in B} \lambda_b y_{b} - \sum_{ij \in E'} x_{ij} & \label{eq:of}\\
        & \sum_{j \in V'\backslash \{t\}} x_{sj} = 1, & \label{eq:s-all} \\
        & \sum_{j \in V'\backslash \{s\}} x_{jt} = 1, & \label{eq:all-t} \\
        & \sum_{j: (i, j) \in E'} x_{ji} - \sum_{j: (i, j) \in E'} x_{ij} = 0, & \ \forall i \in V' \backslash \{s, t\} \label{eq:flow-conservation} \\
-       % & \sum_{(i, j) \in (S, \bar{S})} x_{ij} \geq y_{ib}, & \ \forall S \subset V, i \in S, b \in B(i) \\
-       & \sum_{(i, j) \in A'} f^T_{ij} x_{ij} + \sum_{i \in V} \sum_{b \in B} f^T_b y_{ib} \leq T_{\max}, & \\
-       & \sum_{i \in V'} \sum_{b \in B} f^I_b y_{ib} \leq I_{\max}, & \\
-       & \sum_{i \in V(b)} y_{ib} \leq 1, & \ \forall b \in B, \\
-       & \sum_{(i, j) \in A'} x_{ji} \geq y_{ib}, & \ \forall i \in V(b), b \in B.
+        & \sum_{(i, j) \in (S, \bar{S})} x_{ij} \geq y_{ib}, & \ \forall S \subset V, i \in S, b \in B(i) \\
+       & \sum_{(i, j) \in A'} f^T_{ij} x_{ij} + \sum_{b \in B} f^T_b y_{b} \leq T_{\max}, & \\
+       & \sum_{b \in B} f^I_b y_{b} \leq I_{\max}, & \\
+    %   & \sum_{i \in V(b)} y_{ib} \leq 1, & \ \forall b \in B, \\
+       & \sum_{(i, j) \in A} x_{ij} \geq y_{b}, & \ \forall i \in V, b \in B(i)
 \end{align}
 
 
