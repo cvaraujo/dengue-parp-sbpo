@@ -80,17 +80,17 @@ Primeira, Segunda, Terceira.
 \vspace{8mm}
 
 \begin{abstract}
-This document presents the format for full papers to be published in the Annals of the LII SBPO.
-Title, affiliation, abstract and keywords must be exactly the same as the author informed when registered the paper through the submission system. 
-The Abstract must not exceed 150 words.
+In this work, we propose the Dengue Prize-collecting Arc Routing Problem (Dengue-PARP), which is the problem of create routes to spraying vehicles as
+a Prize-collecting Arc Routing Problem (PARP). In Dengue-PARP, each arc of the block has a profit value that is related to the number of dengue cases. The goal of the Dengue-PARP is to maximize the profit in order to create a route that cover a set of streets/blocks. In this work, we formulated the
+Dengue-PARP as an Integer Programming (IP), and subjected to computational experiments with a set of 39 instances based on real world maps, containing real notified cases. The methodology achieved optimal values for 18 instances and feasible solutions with close gap to the other 21.
 \end{abstract}
 
 \bigskip
 \begin{keywords}
-First keyword. Second keyword. Last keyword.
+Dengue. Prize-collecting. Integer Programming.
 
 \bigskip
-\noindent{Paper topics (indicate in order of PRIORITY the paper topic(s))}
+% \noindent{Paper topics (indicate in order of PRIORITY the paper topic(s))}
 \end{keywords}
 
  
@@ -278,25 +278,25 @@ Fortaleza.
 
 \section{Mathematical Formulation for Dengue-PARP} \label{sec:formulation}
 
-Consider a weighted, connected, and directed graph $G = (V, E)$, being $V = \{1,
-\dots, n\}$ the  set of $n$ vertices, $E =  \{(i, j): i \text{ and }  j \in V, i
-\neq j\}$ the set of $m$ edges. A block, in the \gls{dparp}, can be defined as a
-cycle $C$ such that the edges $(i, j) \in C$ are in clockwise order. The set $B$
+Consider a weighted, connected, and directed graph $G = (V, A)$, being $V = \{1,
+\dots, n\}$ the  set of $n$ vertices, $A =  \{(i, j): i \text{ and }  j \in V, i
+\neq j\}$ the set of $m$ arcs. A block, in the \gls{dparp}, can be defined as a
+cycle $C$ such that the arcs $(i, j) \in C$ are in clockwise order. The set $B$
 contains all blocks  of the instance, and each  vertex $i \in V$, that  is not a
-deadend, belongs to at least one block, while  each edge $(i, j) \in E$ is in at
+deadend, belongs to at least one block, while  each arc $(i, j) \in A$ is in at
 most one  block. In order to  allows the route starts  and end in any  vertex of
 $G$, it is necessary to change $V$  to $V'$ by adding two artificial vertices, a
-source $s$ and a  target $t$. It is also necessary add a  set of edges such that
-$E' = E  \cup \{(s, u), (u, t)\},  \forall u \in V$. The notation  $B(i)$ is the
+source $s$ and a  target $t$, and a  set of arcs such that
+$A' = A  \cup \{(s, u), (u, t)\},  \forall u \in V$. The notation  $B(i)$ is the
 set of  blocks in which $i$  belongs, and $V(b)$ is  the set of vertices  in the
 block $b$.
 
-Each edge of $G$ contains two associated values: number of notified dengue cases
-and distance in meters.  We set the \gls{dparp} entry as a  tuple ($G(V, E'), s,
-t, B, \lambda,  \xi, f^T, f^I, i_{max}, T_{max}$), where  each edge contains the
+Each arc of $G$ contains two associated values: number of notified dengue cases
+and distance in meters.  We set the \gls{dparp} entry as a  tuple ($G(V, A'), s,
+t, B, \lambda,  \xi, f^T, f^I, i_{max}, T_{max}$), where  each arc contains the
 values  of dengue  cases  ($\lambda$),  and distance  ($\xi$).  Consider a  time
-function $f^T$ that  compute the time to  travel in a edge  ($f^T_{ij}$) and the
-time to visit all  the edges of a block ($f^T_b$).  The function $f^I_b$ compute
+function $f^T$ that  compute the time to  travel in a arc  ($f^T_{ij}$) and the
+time to visit all  the arcs of a block ($f^T_b$).  The function $f^I_b$ compute
 the amount of insecticide used to spraying a block. Lastly, consider the maximum
 amount of insecticide  available ($I_{max}$), and the maximum time  of the route
 ($T_{max}$).
@@ -305,7 +305,7 @@ A feasible route of \gls{dparp} can omit the cycles that make up a block, i. e.,
 if the model consider  a block as sprayed, the route must  contains at least one
 vertex from the block visited by the route. This approach takes advantage of the
 nebulizer pulverization pattern presented for  this problem, that must cover all
-the  edges  before  start  to  nebulize   another  block.  Next,  we  present  a
+the  arcs  before  start  to  nebulize   another  block.  Next,  we  present  a
 single-vehicle \gls{ilp} formulation for the \gls{dparp}.
 
 \newpage
@@ -314,32 +314,32 @@ single-vehicle \gls{ilp} formulation for the \gls{dparp}.
 Define the following variables:
 
 \begin{itemize}
-  \item $x_{ij}$: A binary variable that indicates whether the edge $(i, j) \in
-    E'$ belongs to the route from $s$ to $t$;
+  \item $x_{ij}$: A binary variable that indicates whether the arc $(i, j) \in
+    A'$ belongs to the route from $s$ to $t$;
   \item $y_{ib}$: A binary variable that is valued 1 if the vertex $i \in V$ is
     used as start point to spraying the block $b \in B(i)$; 
 \end{itemize}
 With these variables, the \gls{dparp} \gls{ilp} formulation reads:
 
 \begin{align}
-  \max & \sum_{i \in V} \sum_{b \in B} \lambda_b y_{ib} - \sum_{ij \in E} x_{ij} & \label{eq:of}\\
+  \max & \sum_{i \in V} \sum_{b \in B} \lambda_b y_{ib} - \sum_{ij \in A} x_{ij} & \label{eq:of}\\
   \nonumber \text{subject to:} & & \\
        & \sum_{j \in V'\backslash \{t\}} x_{sj} = 1 & \label{eq:s-all} \\
        & \sum_{j \in V'\backslash \{s\}} x_{jt} = 1 & \label{eq:all-t} \\
-       & \sum_{j: (i, j) \in E'} x_{ji} - \sum_{j: (i, j) \in E'} x_{ij} = 0 & \ \forall i \in V \label{eq:flow-conservation} \\
+       & \sum_{j: (i, j) \in A'} x_{ji} - \sum_{j: (i, j) \in A'} x_{ij} = 0 & \ \forall i \in V \label{eq:flow-conservation} \\
        & \sum_{(i, j) \in A'} f^T_{ij} x_{ij} + \sum_{i \in V} \sum_{b \in B} f^T_b y_{ib} \leq T_{\max} & \label{eq:max-time} \\
        & \sum_{i \in V'} \sum_{b \in B} f^I_b y_{ib} \leq I_{\max} & \label{eq:max-insecticide} \\
        & \sum_{i \in V(b)} y_{ib} \leq 1 & \ \forall b \in B \label{eq:max-attend} \\
        & \sum_{(i, j) \in A} x_{ij} \geq y_{ib} & \ \forall i \in V(b), b \in B \label{eq:in-path} \\
        & \sum_{(i, j) \in (S, \bar{S})} x_{ij} \geq y_{ib} & \ \forall S \subseteq V, i \in S, b \in B(i) \label{eq:subtour-elimination} \\
-       & x_{ij} \in \{0, 1\} & \ \forall (i, j) \in E' \label{eq:dom-x} \\
+       & x_{ij} \in \{0, 1\} & \ \forall (i, j) \in A' \label{eq:dom-x} \\
        & y_{ib} \in \{0, 1\} & \ \forall i \in V, b \in B. \label{eq:dom-y} 
 \end{align}
 
 Each feasible solution for the \gls{ilp} model is a route starting at vertex $s$
 and ending  in $t$  obeying the  limits of time  and insecticide.  The objective
-function  \eqref{eq:of} maximizes  the profit  of each  edge in  a block,  while
-minimizes       the      number       of      used       edges.      Constraints
+function  \eqref{eq:of} maximizes  the profit  of each  arc in  a block,  while
+minimizes       the      number       of      used       arc.      Constraints
 \eqref{eq:s-all}-\eqref{eq:flow-conservation} enforces flow conservation at each
 vertex. The constraints  \eqref{eq:max-time} limit the maximum time  used in the
 route,  considering  a  different  velocity to  spraying  a  block.  Constraints
@@ -347,7 +347,7 @@ route,  considering  a  different  velocity to  spraying  a  block.  Constraints
 constraints \eqref{eq:max-attend} and \eqref{eq:in-path} ensure that at most one
 vertex is used as start point to spraying  a block, and this vertices must be in
 the   final  route.   Constraints  \eqref{eq:subtour-elimination}   are  subtour
-elimination, ensuring the connectivity of the edges  in route when it is used to
+elimination, ensuring the connectivity of the arcs  in route when it is used to
 spraying at  least one block. Constraints  \eqref{eq:dom-x}-\eqref{eq:dom-y} set
 the domain of the variables.
 
@@ -368,9 +368,9 @@ These  notification were  obtained from  the Information  System for  Notifiable
 Diseases (SINAN) \citep{laguardia:2004}, from  the years of 2015-2021, including
 information about addresses  of the patients. The addresses were  applied in the
 library  OSMnx \citep{boeing:2017}  in order  to obtain  geocodes (latitude  and
-longitude),  and mapping  it to  blocks  as the  number  of cases  in the  edges
+longitude),  and mapping  it to  blocks  as the  number  of cases  in the  arcs
 (streets). The OSMnx receives as input a  radius size to create the graph from a
-map, the edges are the streets of  the map and the vertices are the intersection
+map, the arcs are the streets of  the map and the vertices are the intersection
 of  two or  more streets,  as  shown in  Figure \ref{fig:graph-examples},  where
 Figures (a)  and (b) are example  graphs obtained from Alto  Santo and Limoeiro,
 respectively, with  radius value equal to  1000. Also, it is  necessary that the
@@ -381,12 +381,22 @@ polygon (block).
 
 \begin{figure}[!ht]
   \begin{minipage}[c]{.6\textwidth}
-    \includegraphics[width=6cm, height=6cm]{graph-alto-santo.png} \\
+    \includegraphics[width=6cm, height=5cm]{alto-santo-osm.png} \\
+    (a) Map of Alto Santo from OSM.
+  \end{minipage}
+  % \quad
+  \begin{minipage}[c]{.6\textwidth}
+    \includegraphics[width=6cm, height=5cm]{limoeiro-osm.png} \\
+    (b) Map of Limoeiro from OSM.
+  \end{minipage}
+  \\
+  \begin{minipage}[c]{.6\textwidth}
+    \includegraphics[width=6cm, height=5cm]{graph-alto-santo.png} \\
     (a) Example graph of Alto Santo.
   \end{minipage}
   % \quad
   \begin{minipage}[c]{.6\textwidth}
-    \includegraphics[width=6cm, height=6cm]{graph-limoeiro.png} \\
+    \includegraphics[width=6cm, height=5cm]{graph-limoeiro.png} \\
     (b) Example graph of Limoeiro.
   \end{minipage}
   \caption{\label{fig:graph-examples} Example of graphs with radius 1000.}
@@ -471,7 +481,7 @@ redundancy between time and insecticide constraints.
 Table~\ref{tab:model-results} exhibits  the results of the  \gls{ilp} model. The
 first column  is the  instance identification, each  containing three  pieces of
 information: name  of city,  size of the  map, and year  of the  notified cases,
-respectively. Second  to fourth columns  are the  number of vertices,  edges and
+respectively. Second  to fourth columns  are the  number of vertices,  arcs and
 blocks, respectively. Columns ``LB'' and ``UB'' present the ``Lower Bound (LB)''
 (dual) and ``Upper  Bound (UB)'' (primal) for each instance.  The ``gap $(\%)$''
 column  displays  the relative  gap  between  lower  and upper  bounds.  Columns
@@ -583,7 +593,7 @@ notified-limoeiro-3000-2021   & 1212 & 3497 & 517 & 9973 & 11053 & 9,8  & 2990  
 
 In Table \ref{tab:model-results}, it is noticed that the \gls{ilp} model reached
 the optimum for the  18 instances from the city of Alto  Santo, that contains at
-most 353 vertices, and 946 edges. The average time for the 18 instances in which
+most 353 vertices, and 946 arcs. The average time for the 18 instances in which
 the optimal value were obtained was 992  seconds, and the number of Gurobi nodes
 is high, being on average 135.338. For the other 21 instances in which the model
 did not close the  duality gap, the distance of the bounds  was less than $15\%$
