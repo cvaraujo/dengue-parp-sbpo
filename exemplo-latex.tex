@@ -41,7 +41,7 @@
 
 \begin{document}
 
-\title{A Prize Collecting approach for the Dengue Arc Routing Problem} 
+\title{A Prize-Collecting Approach for the Dengue Arc Routing Problem} 
 
 \maketitle
 \thispagestyle{fancy}
@@ -322,7 +322,7 @@ Define the following variables:
 With these variables, the \gls{dparp} \gls{ilp} formulation reads:
 
 \begin{align}
-  \max & \sum_{i \in V} \sum_{b \in B} \lambda_b y_{ib} - \sum_{ij \in A} x_{ij} & \label{eq:of}\\
+  \max & \sum_{i \in V} \sum_{b \in B} \lambda_b y_{ib} & \label{eq:of}\\
   \nonumber \text{subject to:} & & \\
        & \sum_{j \in V'\backslash \{t\}} x_{sj} = 1 & \label{eq:s-all} \\
        & \sum_{j \in V'\backslash \{s\}} x_{jt} = 1 & \label{eq:all-t} \\
@@ -493,10 +493,14 @@ instances in which the optimality was proved. The rows highlighted in light gray
 (\crule[lgr]{3mm}{3mm}) correspond to the instances in which a feasible solution
 was found, but the duality gap could not be closed.
 
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[!ht]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{rrrrrrrrr}
+\begin{tabular}{lrrrrrrrr}
 \hline
 \multicolumn{1}{c}{\textbf{Instance}} &
   \multicolumn{1}{c}{\textbf{$|V|$}} &
@@ -508,83 +512,91 @@ was found, but the duality gap could not be closed.
   \multicolumn{1}{c}{\textbf{Nodes}} &
   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Time\\ (seconds)\end{tabular}}} \\ \hline
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-1000-2016 & 179  & 499  & 73  & 159  & 159   & 0,0  & 96290  & 372,5  \\
+notified-alto-santo-1000-2016 & 179  & 499  & 73  & 180    & 180    & 0,0  & 1       & 0,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-1000-2017 & 179  & 499  & 73  & 911  & 911   & 0,0  & 98484  & 333,1  \\
+notified-alto-santo-1000-2017 & 179  & 499  & 73  & 939    & 939    & 0,0  & 1       & 0,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-1000-2018 & 179  & 499  & 73  & 919  & 919   & 0,0  & 66512  & 604,9  \\
+notified-alto-santo-1000-2018 & 179  & 499  & 73  & 947    & 947    & 0,0  & 1       & 0,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-1000-2019 & 179  & 499  & 73  & 919  & 919   & 0,0  & 66512  & 600,4  \\
+notified-alto-santo-1000-2019 & 179  & 499  & 73  & 947    & 947    & 0,0  & 1       & 0,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-1000-2020 & 179  & 499  & 73  & 954  & 954   & 0,0  & 56969  & 654,7  \\
+notified-alto-santo-1000-2020 & 179  & 499  & 73  & 982    & 982    & 0,0  & 1       & 0,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-1000-2021 & 179  & 499  & 73  & 1028 & 1028  & 0,0  & 54666  & 599,9  \\ \hline
+notified-alto-santo-1000-2021 & 179  & 499  & 73  & 1 056  & 1 056  & 0,0  & 1       & 0,1                         \\ \hline
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-2000-2016 & 253  & 684  & 88  & 112  & 112   & 0,0  & 7636   & 7,6    \\
+notified-alto-santo-2000-2016 & 253  & 684  & 88  & 126    & 126    & 0,0  & 1       & 0,0                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-2000-2017 & 253  & 684  & 88  & 805  & 805   & 0,0  & 53099  & 857,0  \\
+notified-alto-santo-2000-2017 & 253  & 684  & 88  & 832    & 832    & 0,0  & 539     & 3,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-2000-2018 & 253  & 684  & 88  & 805  & 805   & 0,0  & 53099  & 844,5  \\
+notified-alto-santo-2000-2018 & 253  & 684  & 88  & 832    & 832    & 0,0  & 539     & 3,2                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-2000-2019 & 253  & 684  & 88  & 805  & 805   & 0,0  & 53099  & 855,4  \\
+notified-alto-santo-2000-2019 & 253  & 684  & 88  & 832    & 832    & 0,0  & 539     & 3,2                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-2000-2020 & 253  & 684  & 88  & 834  & 834   & 0,0  & 748852 & 1464,8 \\
+notified-alto-santo-2000-2020 & 253  & 684  & 88  & 861    & 861    & 0,0  & 539     & 3,2                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-2000-2021 & 253  & 684  & 88  & 916  & 916   & 0,0  & 84029  & 474,3  \\ \hline
+notified-alto-santo-2000-2021 & 253  & 684  & 88  & 941    & 941    & 0,0  & 714     & 2,7                         \\ \hline
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-3000-2016 & 353  & 946  & 114 & 146  & 146   & 0,0  & 56891  & 218,6  \\
+notified-alto-santo-3000-2016 & 353  & 946  & 114 & 163    & 163    & 0,0  & 1       & 0,1                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-3000-2017 & 353  & 946  & 114 & 924  & 924   & 0,0  & 246288 & 2295,2 \\
+notified-alto-santo-3000-2017 & 353  & 946  & 114 & 952    & 952    & 0,0  & 227     & 0,5                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-3000-2018 & 353  & 946  & 114 & 924  & 924   & 0,0  & 246288 & 2298,3 \\
+notified-alto-santo-3000-2018 & 353  & 946  & 114 & 952    & 952    & 0,0  & 227     & 0,5                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-3000-2019 & 353  & 946  & 114 & 924  & 924   & 0,0  & 246288 & 2293,4 \\
+notified-alto-santo-3000-2019 & 353  & 946  & 114 & 952    & 952    & 0,0  & 227     & 0,5                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-3000-2020 & 353  & 946  & 114 & 960  & 960   & 0,0  & 72736  & 1624,6 \\
+notified-alto-santo-3000-2020 & 353  & 946  & 114 & 988    & 988    & 0,0  & 227     & 0,5                         \\
 \rowcolor[HTML]{9B9B9B} 
-notified-alto-santo-3000-2021 & 353  & 946  & 114 & 1067 & 1067  & 0,0  & 128351 & 1472,6 \\ \hline
+notified-alto-santo-3000-2021 & 353  & 946  & 114 & 1 095  & 1 095  & 0,0  & 227     & 0,5                         \\ \hline
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2015   & 372  & 1063 & 152 & 91     & 91     & 0,0  & 1       & 0,4                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2016   & 372  & 1063 & 152 & 127    & 127    & 0,0  & 1       & 0,2                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2017   & 372  & 1063 & 152 & 245    & 245    & 0,0  & 63      & 0,5                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2018   & 372  & 1063 & 152 & 253    & 253    & 0,0  & 63      & 0,5                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2019   & 372  & 1063 & 152 & 329    & 329    & 0,0  & 1       & 0,3                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2020   & 372  & 1063 & 152 & 835    & 835    & 0,0  & 492 647 & 734,5                       \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-1000-2021   & 372  & 1063 & 152 & 847    & 847    & 0,0  & 312     & 1,0                         \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2015   & 372  & 1063 & 152 & 55   & 57    & 3,5  & 540017 & TLE    \\
+notified-limoeiro-2000-2015   & 980  & 2866 & 443 & 859    & 860    & 0,1  & 150 123 & TLE                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-2000-2016   & 980  & 2866 & 443 & 1 631  & 1 631  & 0,0  & 12 482  & 655,8                       \\
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2016   & 372  & 1063 & 152 & 82   & 90    & 8,9  & 261087 & TLE    \\
+notified-limoeiro-2000-2017   & 980  & 2866 & 443 & 10     & 2 506  & 99,6 & 78 998  & \cellcolor[HTML]{C0C0C0}TLE \\
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2017   & 372  & 1063 & 152 & 189  & 200   & 5,5  & 275318 & TLE    \\
+notified-limoeiro-2000-2018   & 980  & 2866 & 443 & 2 574  & 2 575  & 0,0  & 368 552 & TLE                         \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-2000-2019   & 980  & 2866 & 443 & 4 187  & 4 187  & 0,0  & 14 077  & 330,2                       \\
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2018   & 372  & 1063 & 152 & 197  & 207   & 4,8  & 528181 & TLE    \\
+notified-limoeiro-2000-2020   & 980  & 2866 & 443 & 52     & 10 455 & 99,5 & 150 100 & \cellcolor[HTML]{C0C0C0}TLE \\
+\rowcolor[HTML]{9B9B9B} 
+{\color[HTML]{333333} notified-limoeiro-2000-2021} &
+  {\color[HTML]{333333} 980} &
+  {\color[HTML]{333333} 2866} &
+  {\color[HTML]{333333} 443} &
+  {\color[HTML]{333333} 11 096} &
+  {\color[HTML]{333333} 11 096} &
+  {\color[HTML]{333333} 0,0} &
+  {\color[HTML]{333333} 21 488} &
+  {\color[HTML]{333333} 151,3} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2019   & 372  & 1063 & 152 & 277  & 289   & 4,2  & 78947  & TLE    \\
+notified-limoeiro-3000-2015   & 1212 & 3497 & 517 & 693    & 840    & 17,5 & 123 813 & \cellcolor[HTML]{C0C0C0}TLE \\
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2020   & 372  & 1063 & 152 & 786  & 796   & 1,3  & 722423 & TLE    \\
+notified-limoeiro-3000-2016   & 1212 & 3497 & 517 & 37     & 1 639  & 97,7 & 33 173  & \cellcolor[HTML]{C0C0C0}TLE \\
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-1000-2021   & 372  & 1063 & 152 & 795  & 808   & 1,6  & 247151 & TLE    \\ \hline
+notified-limoeiro-3000-2017   & 1212 & 3497 & 517 & 2 231  & 2 467  & 9,6  & 82 621  & \cellcolor[HTML]{C0C0C0}TLE \\
 \rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2015   & 980  & 2866 & 443 & 765  & 804   & 4,9  & 52335  & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2016   & 980  & 2866 & 443 & 1360 & 1586  & 14,2 & 8388   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2017   & 980  & 2866 & 443 & 2167 & 2457  & 11,8 & 14233  & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2018   & 980  & 2866 & 443 & 2293 & 2532  & 9,4  & 4666   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2019   & 980  & 2866 & 443 & 3839 & 4135  & 7,2  & 41747  & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2020   & 980  & 2866 & 443 & 360  & 10410 & 96,5 & 3023   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-2000-2021   & 980  & 2866 & 443 & 660  & 11048 & 94,0 & 10888  & TLE    \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2015   & 1212 & 3497 & 517 & 27   & 789   & 96,6 & 2624   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2016   & 1212 & 3497 & 517 & 1364 & 1601  & 14,8 & 3171   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2017   & 1212 & 3497 & 517 & 2116 & 2427  & 12,8 & 5612   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2018   & 1212 & 3497 & 517 & 2179 & 2493  & 12,6 & 3534   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2019   & 1212 & 3497 & 517 & 4022 & 4077  & 1,3  & 3031   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2020   & 1212 & 3497 & 517 & 9276 & 10392 & 10,7 & 3201   & TLE    \\
-\rowcolor[HTML]{C0C0C0} 
-notified-limoeiro-3000-2021   & 1212 & 3497 & 517 & 9973 & 11053 & 9,8  & 2990   & TLE    \\ \hline
+notified-limoeiro-3000-2018   & 1212 & 3497 & 517 & 46     & 2 532  & 98,2 & 122 224 & \cellcolor[HTML]{C0C0C0}TLE \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-3000-2019   & 1212 & 3497 & 517 & 4 122  & 4 122  & 0,0  & 56 962  & 1 067,9                     \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-3000-2020   & 1212 & 3497 & 517 & 10 436 & 10 437 & 0,0  & 88 616  & 1 010,3                     \\
+\rowcolor[HTML]{9B9B9B} 
+notified-limoeiro-3000-2021   & 1212 & 3497 & 517 & 11 098 & 11 098 & 0,0  & 2 306   & 9,9                         \\ \hline
 \end{tabular}%
 }
 \caption{Results of the formulation for real instances.}
