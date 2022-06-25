@@ -31,7 +31,7 @@
 \setlength{\headsep}{-5mm}
 
 \newacronym{ew}{EW}{Epidemiological Week}
-\newacronym{parp}{PARP}{Prize-collecting Arc Routing Problem}
+\newacronym{parp}{PARP}{Prize-collecting Arc Routing Problems}
 \newacronym{dparp}{Dengue-PARP}{Dengue Prize-collecting Arc Routing Problem}
 \newacronym{ilp}{IP}{Integer Programming}
 \newacronym{ml}{ML}{Machine Learning}
@@ -61,28 +61,46 @@
 }
 
 \vspace{8mm}
-\begin{resumo}
-Este modelo resume as normas de formata\c c\~ao para os trabalhos completos a serem publicados
-nos Anais do LII SBPO. T\'\i tulo, filia\c c\~ao, resumo e palavras-chave devem repetir fielmente
-o que foi informado quando o autor cadastrou o artigo atrav\' es do sistema de submiss\~ao.
-O Resumo deve ter no m\' aximo 150 palavras.
- \end{resumo}
+\begin{resumo} 
+
+Neste trabalho, propomos o Problema de Roteamento em Arcos com coleta de Prêmios
+no contexto da Dengue (Dengue-PARP), que  é o problema de encontrar rotas ótimas
+para  veículos nebulizadores  como  uma  medida de  controle  do crescimento  da
+população de mosquitos. No Dengue-PARP, cada  arco de um quarteirão tem um valor
+de prêmio relacionado ao número de casos  de Dengue. O objetivo do Dengue-PARP é
+maximizar os prêmios coletados criando uma rota que que passe por um subconjunto
+de  quarteirões. Este  trabalho formula  o Dengue-PARP  utilizando um  modelo de
+Programação Inteira (PI), submetido a experimentos computacionais em um conjunto
+de 39 instâncias do mundo real  com casos notificados confirmados. A metodologia
+obteve soluções ótimas  em 31 instâncias, sendo  todas as 25 que  contém até 372
+vértices e  6 das  maiores instâncias,  que contém até  1212 vértices.  O modelo
+também obteve soluções viáveis para as 8 instâncias restantes.
+
+\end{resumo}
 
 \bigskip
 \begin{palchaves}
-Primeira, Segunda, Terceira.
-
-\bigskip
-\noindent{T\'opicos (indique, em ordem de PRIORIDADE, o(s) t\'opicos(s) de seu artigo) }
+Dengue. Coleta de Prêmios. Programação Inteira.
 \end{palchaves}
 
 
 \vspace{8mm}
 
 \begin{abstract}
-In this work, we propose the Dengue Prize-collecting Arc Routing Problem (Dengue-PARP), which is the problem of create routes to spraying vehicles as
-a Prize-collecting Arc Routing Problem (PARP). In Dengue-PARP, each arc of the block has a profit value that is related to the number of dengue cases. The goal of the Dengue-PARP is to maximize the profit in order to create a route that cover a set of streets/blocks. In this work, we formulated the
-Dengue-PARP as an Integer Programming (IP), and subjected to computational experiments with a set of 39 instances based on real world maps, containing real notified cases. The methodology achieved optimal values for 18 instances and feasible solutions with close gap to the other 21.
+
+In  this  work, we  propose  the  Dengue  Prize-collecting Arc  Routing  Problem
+(Dengue-PARP),  which is  the problem  of  finding optimal  routes for  spraying
+vehicles as a control measure of the mosquito population growth. In Dengue-PARP,
+each arc  of a street block  has a prize value  related to the number  of dengue
+cases. The goal of  the Dengue-PARP is to maximize the  prize collected in order
+to create  a route  that covers  a subset  of blocks.  This work  formulated the
+Dengue-PARP as  an Integer  Programming (IP)  model, subjected  to computational
+experiments with a set of 39 real-world instances with confirmed notified cases.
+The methodology achieved optimal values for  31 instances, being all the 25 that
+contains up to  372 vertices, and 6  of the largest instances,  containing up to
+1212 vertices.  The model also obtained  feasible solutions for the  8 remaining
+instances.
+
 \end{abstract}
 
 \bigskip
@@ -99,223 +117,215 @@ Dengue. Prize-collecting. Integer Programming.
 
 
 According to the Pan American Health Organization  (PAHO), in the year of 2021 a
-total  of  1.324.108  cases  of  arbivoral diseases  were  reported.  Of  those,
-1.173.674 ($89\%$) were dengue cases, 131.630 were chikungunya cases, and 18.844
+total  of  1.324.108  cases  of  arboviral diseases  were  reported.  Of  those,
+1.173.674 ($89\%$) were Dengue cases, 131.630 were Chikungunya cases, and 18.844
 were  Zika. Between  the \gls{ew}  1 and  the \gls{ew}  19 of  2022, a  total of
-1.279.724 arbivoral  disease already been  reported, in which Brazil  appears in
-first position as the country with  the largest number of dengue reported cases,
-achieving a total of 1.114.758 ($90.9\%$) \citep{paho-1}.
+1.279.724 arboviral disease have already  been reported, in which Brazil appears
+in first  position as  the country  with the largest  number of  Dengue reported
+cases, achieving a total of 1.114.758 ($90.9\%$) \citep{paho-1}.
 
 The  prevention,  control,  and  combat   of  diseases  caused  by  arboviruses,
-especially  dengue, has  been subject  of great  concern worldwide,  as it  is a
+especially dengue,  has been subjecting of  great concern worldwide, as  it is a
 reemerging disease caused by the transmission of Den  1, Den 2, Den 3, and Den 4
 viruses  through  the {\em  Aedes  aegypt}  and  {\em Aedes  albopictus},  which
 proliferates in  the tropical  regions of  the world,  comprising more  than 1.8
-billions of people susceptible to being infected \citep{negreiros-2020}.
+billion of people susceptible to being infected \citep{negreiros-2020}.
 
-The dengue virus needs a biological vector to be transmitted. The control of the
-mosquito can be done in two  ways: eliminating adult mosquitoes, and eliminating
-the larval  breeding grounds. In addition  to precaution, where the  focus is to
-make the population aware and eliminate  possible recipients that could serve as
-breeding grounds for mosquitoes, chemical control is the most used approach. The
-chemical  control  consists in  the  use  of  chemical substances  (for  example
-insecticide) for vector control in the larval and adult stages.
+The  control  of  the mosquito  can  be  done  in  two ways:  eliminating  adult
+mosquitoes,  and  eliminating  the  larval  breeding  grounds.  In  addition  to
+precaution,  where the  focus  is to  make the  population  aware and  eliminate
+possible  recipients  that  could  serve as  breeding  grounds  for  mosquitoes,
+chemical control is the most used approach. The chemical control consists in the
+use of chemical  substances (for example insecticide) for vector  control in the
+larval and adult stages.
 
 The use of  insecticides in public health is based  on technical and operational
-standards,  that derived  from a  group of  experts in  pesticides of  the World
-Health  Organization  (WHO), which  recommends  the  active ingredients  of  the
-products and recommends the doses for the various types of available treatments.
-The rational and safe use in  vector control activities is essential, given that
-their indiscriminate  use determines environmental  impacts, in addition  of the
-vector developing  resistance to the  products. An emergency approach  to reduce
-the adult mosquito  population, used in case of epidemics  or endemics mainly in
-urban areas,  is to apply  insecticide using  a nebulizer equipment  attached to
-vehicles, which  we call throughout  this work  as spraying vehicle,  see Figure
+standards, derived  from a group  of experts in  pesticides of the  World Health
+Organization (WHO), which recommends the  active ingredients of the products and
+recommends the doses for the various types of available treatments. The rational
+and  safe use  in  vector  control activities  is  essential,  given that  their
+indiscriminate use determines  environmental impacts, in addition  to the vector
+developing resistance to the products. An emergency approach to reduce the adult
+mosquito  population, used  in case  of epidemics  or endemics  mainly in  urban
+areas, is to  apply insecticide using nebulizer equipment  attached to vehicles,
+which   we   call   throughout   this  work   spraying   vehicle,   see   Figure
 \ref{fig:nebulizer}.
 
 \begin{figure}[!ht]
   \centering
-    \includegraphics[scale=0.4]{fumace.jpg}
-    \caption{Nebulizer equipment attached to vehicle. }
+    \includegraphics[scale=0.5]{fumace.jpg}
+    \caption{Nebulizer equipment attached to vehicle \citep{fumace-2022}.}
     \label{fig:nebulizer}
 \end{figure}
 
-Spraying vehicles  are very useful for  the control of outbreaks  and epidemics,
-due to its high performance, 80 to 160 blocks per day depending of the equipment
-model, however it  is not recommended in situations where  the transmission need
-to be blocked. These applications must be constantly supervised to guarantee the
-indicated insecticide dosage in each visited  street, since there is a series of
+Spraying vehicles are useful for the  control of outbreaks and epidemics, due to
+its high performance, 80 to 160 blocks per day depending on the equipment model.
+These  applications must  be constantly  supervised to  guarantee the  indicated
+insecticide  dosage  in  each  visited  street,  since  there  is  a  series  of
 operational   factors,  such   as   the  equipment   flow   and  vehicle   speed
-\citep{brasil-dept-helth:2009}. In  order for the spraying  vehicle applications
-to have the desired effectiveness, it must  be realized in a period with correct
-conditions to  maintain the insecticide  cloud moving  close to the  ground. The
-thermal inversion is  generally produced in the morning, after  the sunrise, and
-in the  afternoon, just before  sunset, these moments  are optimal to  apply the
-insecticide with the spraying vehicle.
+\citep{brasil-dept-helth:2009}. To have the desired effect, the spraying must be
+realized in a  period with correct conditions to maintain  the insecticide cloud
+staying close to the ground. The  thermal inversion is generally produced in the
+morning, after the sunrise, and in  the afternoon, just before sunset and, these
+moments  are considered  optimal  to  apply the  insecticide  with the  spraying
+vehicle.
 
 The sprayed insecticide has no residual  effect and it is strongly influenced by
-wind and  obstacles along the  streets. The best  results are achieved  when the
-most dense  insecticide cloud  is at  a distance of  up to  100 meters  from the
+wind  and obstacles  along the  streets. The  best effect  is achieved  when the
+densest  insecticide cloud  is at  a distance  of at  most 100  meters from  the
 equipment.  As this  distance  is  crossed, the  effectiveness  decreases, as  a
-consequence of droplet drift influenced by  factor of the environment. The cloud
+consequence of droplet drift influenced by factors of the environment. The cloud
 dispersion is illustrated in Figure \ref{fig:dispersion}.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[scale=0.4]{cloud-dispersion.png}
-  \caption{Cloud dispersion of the application.}
+  \caption{Cloud dispersion of the application \citep{brasil-dept-helth:2009}.}
   \label{fig:dispersion}
 \end{figure}
 
-The instructions about the insecticide application method are generally based on
-the  ideal conditions  of topology,  structure  of the  locality, and  favorable
-winds. The operation  is often harmed by unpaved roads,  presence of high walls,
-and  high vegetation,  in additions  to  headwinds. Such  this, the  application
-methodology must  consider these limitations  in order  to obtain a  good impact
-over the  vector population. The  vehicle must  travel around each  block before
-starting the next one, as show in Figure \ref{fig:travel-pattern}.
+The instructions  about the insecticide  application are generally based  on the
+ideal  conditions of  topology, the  structure  of the  locality, and  favorable
+winds. The  operation is  often harmed  by unpaved roads,  the presence  of high
+walls,  and  high   vegetation,  in  addition  to   headwinds.  The  application
+methodology  must consider  these limitations  to obtain  a good  impact on  the
+vector population. The vehicle must travel around each block before starting the
+next one, as shown in Figure \ref{fig:travel-pattern}.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[scale=0.23]{visit-pattern.jpg}
-  \caption{Vehicle pattern with nebulizer.}
+  \includegraphics[scale=0.25]{visit-pattern.jpg}
+  \caption{Vehicle pattern with nebulizer \cite{brasil-dept-helth:2009}.}
   \label{fig:travel-pattern}
 \end{figure}
 
-
 The complexity of the process of prevention and control of the disease is large,
 involving  only  in  Brazil,  annual   expenses  exceeding  R$\$$  1.6  billions
-\citep{negreiros-2020}.  Such  resources could  be  better  used if  the  dengue
-logistics was more  effective, and use the tools of  operations research. To the
-best of our knowledge,  we are the first to introduce  the \gls{dparp}, which is
-the problem of create routes to  spraying vehicles as a \gls{parp} with resource
-constraints.  \gls{parp}s are  arc routing  problems where,  in addition  to the
-cost, there is a profit function that must  be taken into account when an arc is
-serviced \citep{araoz:2006}. In \gls{dparp}, each arc  of the block has a profit
-value  that is  related to  the number  of dengue  cases, it  is considered  the
-block-visit pattern described in  Figure \ref{fig:travel-pattern}, and limits of
-time and insecticide. The  goal of the \gls{dparp} is to  maximize the profit in
-order to  create a route that  cover a set  of streets/blocks. In this  work, we
-formulated the  \gls{dparp} as a  \gls{ilp} and  test the model  using instances
-based on real maps, containing real notified cases.
+\citep{negreiros-2020}. Such resources  could be better allocated  if the dengue
+logistics were better assisted by the tools of operations research.
 
-This work is  organized as follows. In  the next section we present  a review of
+To the  best of our  knowledge, we are the  first to introduce  the \gls{dparp},
+which  is the  problem  of finding  optimal routes  for  spraying vehicles  with
+resource constraints. \gls{parp}s are arc routing problems where, in addition to
+the cost, there is a prize function that  must be taken into account when an arc
+is serviced \citep{araoz:2006}.  In \gls{dparp}, each block has  a prize related
+to how critical the  dengue outbreak is in that block measured  by the number of
+Dengue  cases. Moreover,  the  routes must  satisfy  the block-visiting  pattern
+described  in  Figure  \ref{fig:travel-pattern}   and  must  consider  time  and
+insecticide  constraints. The  \gls{dparp} goal  is  to maximize  the prizes  by
+setting a route  that covers the most critical streets/blocks.  In this work, we
+formulated  the \gls{dparp}  as  an  \gls{ilp} model,  and  tested on  real-life
+instances with confirmed notified cases.
+
+This work is organized  as follows. In the next section, we  present a review of
 the  literature on  machine learning  and operations  research tools  applied in
-dengue context.  Section \ref{sec:formulation}  introduces an \gls{ilp}  for the
+dengue logistics. Section \ref{sec:formulation}  introduces an \gls{ilp} for the
 \gls{dparp}. Section  \ref{sec:instance-generation} explains how  instances were
-generated to validate the methodologies. Section \ref{sec:computational-results}
-reports the computational  results. Finally, we make our  concluding remarks and
-discuss some perspectives for future work in the last section.
+obtained    and    organized    to    validate    the    methodology.    Section
+\ref{sec:computational-results} reports  the computational results.  Finally, we
+make our concluding remarks and discuss some perspectives for future work in the
+last section.
+\newline
 
 \section{Related Work} \label{sec:related-work}
 
 An extensive number  of works in the  literature use \gls{ml} in  the context of
-dengue~\citep{shakurat:2015,shakil:2015,hair:2019,sarma:2020,appice:2020}. Some
-of  the main  problems  addressed are  generate dengue  diagnoses  based on  the
-patient's symptoms  and clinical patterns,  distinguish dengue and its  types in
+dengue~\citep{shakurat:2015,shakil:2015,hair:2019,sarma:2020,appice:2020}.  Some
+of  the main  problems addressed  are generated  Dengue diagnoses  based on  the
+patient's symptoms and clinical patterns, distinguishing dengue and its types in
 the early stage of disease progression  and, dengue fever predictions in certain
 regions  based on  a  set of  factors, such  as  precipitation, rain,  humidity,
 temperature, and others.
 
-\cite{lowe:2015} presented a  modeling procedure to quantify the  added value of
+\cite{lowe:2015}  presented a  modeling procedure  to quantify  the benefits  of
 including  climate  information in  a  dengue  model  for  the 76  provinces  of
-Thailand,  from  1982-2013  providing  decision  support  systems.  The  authors
-considered a set  factors that have a statistically  significant contribution to
-the relative  risk of  dengue in  the following months.  The system  provided an
-advanced warning that enable the implementation of a more effective surveillance
-system.  According  to  the  authors,  the model  framework  presented  here  is
-extremely flexible and could be  applied in any geographical setting, generating
-a  more global  approach  to assessing  the impact  of  climate variability  and
-climate change on dengue risk.
+Thailand, from  1982-2013. The authors considered  a set of factors  that have a
+statistically  significant contribution  to  the relative  risk  of dengue.  The
+system provided  an advanced warning  that enable  the implementation of  a more
+effective surveillance system. According to  the authors, the proposed framework
+was flexible to be applied in any geographical setting, generating a more global
+approach to  assessing the impact of  climate variability and climate  change on
+dengue risk.
 
-\cite{bannwart-sbpo:2013,bannwart:2013}   proposed   numeric  techniques   using
-genetic  algorithm  to solve  the  control  model  applied  to the  problems  of
-combating dengue,  in which the  goal is to minimizes  the cost of  the chemical
-control  (insecticide) and  genetic  (liberating sterile  males  in the  natural
-environment). These works  assumes that the mortality rate of  the mosquitoes is
-strongly  related  to the  investment  in  control approaches.  The  experiments
-considered a time period  of 120 days and the results  indicated that the amount
-of insecticide used was high considering the other approaches cited in the work,
-however  the authors  presented an  analysis  considering each  control and  the
-impact on the rate of reduction in the mosquito population.
+\cite{bannwart-sbpo:2013,bannwart:2013}  proposed  numeric  techniques  using  a
+genetic algorithm to solve the control model applied to Dengue prevention. Their
+model  considered two  kinds  of  measures: the  cost  of  the chemical  control
+(insecticide) and  genetic (releasing sterile  males in the  environment). These
+works assume  that the mortality rate  of the mosquitoes is  strongly related to
+the investment in  control approaches. The experiments considered a  time of 120
+days and  the results  indicated that  the amount of  insecticide used  was high
+considering the  other approaches cited  in the  work. The authors  presented an
+analysis considering each control and its impact on the rate of reduction in the
+mosquito population.
 
-\cite{cantane:2015} presented an experiment to  obtain the estimate rate used in
-a  mathematical  model. The  mosquito  population  was conducted  under  optimal
-conditions, simulating favorably  environment for its grow. Life  cycle data was
-collected  daily, and  all  estimated  rates used  in  the  equation system  are
-computed. It is  notorious that, without a control action,  the population could
-highly  increase in  a short  amount  of time.  The results  of the  experiments
-provide estimates of  the life cycle of the mosquitoes  are in perfect condition
-in nature and the model allows to  measure a approximate number of mosquitoes in
-the nature for this scenario.
+\cite{cantane:2015}  presented a  mathematical  model to  estimate  the rate  of
+population growth  of mosquitoes. The  authors observed that, without  a control
+action, the  population of mosquitoes  could rapidly increase in  short periods.
+The  results of  the experiments  provide  estimates of  the life  cycle of  the
+mosquitoes are in perfect condition in nature and the model allows to measure an
+approximate number of mosquitoes for each scenario.
 
-The author of  \cite{dosreis:2018,florentino:2018,florentino-b:2018} presented a
-set  of  methodologies for  dengue  control,  such  as mathematical  model  that
-describes the population  dynamics of the Aedes aegypti, and  designed a generic
-control law for the mosquito  population through exact linearization techniques.
-Some heuristics  such as  Genetic Algorithm (GA)  in which the  main goal  is to
-establishing  optimal strategies  using  an integration  of  different types  of
-control  and  a Variable  Neighborhood  Search  (VNS) that  determine  optimized
-control strategies  for the  aquatic phase,  producing a  lower cost  control to
-reduce the mosquito  population. Some advantages presented are  that the control
-in  aquatic phase  reduces  the environment  impact and  the  need for  chemical
-control in large  scale. The results obtained by  computer simulations indicated
-that  the presented  methodologies has  great potential  as a  tool for  support
-decision maker against arboviroses.
+\cite{dosreis:2018},   \cite{florentino:2018},    and   \cite{florentino-b:2018}
+presented methodologies  for dengue control, including  mathematical models that
+describe the population dynamics of the  Aedes aegypti. A Genetic Algorithm (GA)
+was developed  to obtain  optimal strategies using  an integration  of different
+types  of control.  A Variable  Neighborhood Search  (VNS) determines  optimized
+control strategies for the aquatic phase, which is when the mosquitoes are larva
+and pupa.  The authors argue that  the control during the  aquatic phase reduces
+the environmental  impact and the  use of chemical  control on large  scale. The
+authors indicated that the presented methodologies  have the potential as a tool
+for supporting decision-makers against arboviruses.
 
 The works of \cite{negreiros:2008,negreiros:2011,negreiros-2020}, to the best of
 our knowledge, are the only papers that apply operations research techniques for
-the context  of routing  problem along  with the  mosquito control.  These works
-focuses on the computational tool called Web Dengue, aimed at helping the dengue
-control managers providing  a better visualization of the  problem dimension and
-better coordination of control procedures.  Among the methodologies presented in
-\cite{negreiros:2008,negreiros:2011},   the   authors    developed   a   integer
-programming  formulation  to compute  a  periodical  scheduling of  vehicles  in
-determined areas. Also, in \cite{negreiros:2011} was developed a GRASP heuristic
-to create routes for the vehicles with nebulizer, and the proposed algorithm was
-applied  in a  instance  corresponding  to the  location  of  Praia de  Iracema,
-Fortaleza.
+solving routing problems  in the context of mosquito control.  These works focus
+on the computational tool called Web Dengue, aimed at helping the Dengue control
+managers  by  providing  a  better visualization  and  coordination  of  control
+procedures.  Among  the  methodologies,   the  authors  developed  an  \gls{ilp}
+formulation to  compute a periodical  scheduling of vehicles. A  GRASP heuristic
+was also developed  to solve a real-life instance corresponding  to the location
+of Praia de Iracema, Fortaleza.
+\newline
 
 \section{Mathematical Formulation for Dengue-PARP} \label{sec:formulation}
 
 Consider a weighted, connected, and directed graph $G = (V, A)$, being $V = \{1,
 \dots, n\}$ the  set of $n$ vertices, $A =  \{(i, j): i \text{ and }  j \in V, i
-\neq j\}$ the set of $m$ arcs. A block, in the \gls{dparp}, can be defined as a
-cycle $C$ such that the arcs $(i, j) \in C$ are in clockwise order. The set $B$
-contains all blocks  of the instance, and each  vertex $i \in V$, that  is not a
-deadend, belongs to at least one block, while  each arc $(i, j) \in A$ is in at
-most one  block. In order to  allows the route starts  and end in any  vertex of
-$G$, it is necessary to change $V$  to $V'$ by adding two artificial vertices, a
-source $s$ and a  target $t$, and a  set of arcs such that
-$A' = A  \cup \{(s, u), (u, t)\},  \forall u \in V$. The notation  $B(i)$ is the
-set of  blocks in which $i$  belongs, and $V(b)$ is  the set of vertices  in the
-block $b$.
+\neq j\}$ the set of $m$ arcs. A  block, in the \gls{dparp}, can be defined as a
+cycle $C$ such that the arcs $(i, j)  \in C$ are in clockwise order. The set $B$
+contains all blocks of the instance, and each vertex $i \in V$, that is not in a
+dead-end street, belongs to at least one block, while each arc $(i, j) \in A$ is
+in at most one block. The routes may start and end in any vertex of $G$, thus we
+augment $G$ to $G' = (V', A')$  to include two artificial vertices, a source $s$
+and a target $t$, and  a set of arcs such that $A' = A  \cup \{(s, u), (u, t)\},
+\forall u \in V$. The notation $B(i)$ is the set of blocks in which $i$ belongs,
+and $V(b)$ is the set of vertices in the block $b$.
 
-Each arc of $G$ contains two associated values: number of notified dengue cases
-and distance in meters.  We set the \gls{dparp} entry as a  tuple ($G(V, A'), s,
-t, B, \lambda,  \xi, f^T, f^I, i_{max}, T_{max}$), where  each arc contains the
-values  of dengue  cases  ($\lambda$),  and distance  ($\xi$).  Consider a  time
-function $f^T$ that  compute the time to  travel in a arc  ($f^T_{ij}$) and the
-time to visit all  the arcs of a block ($f^T_b$).  The function $f^I_b$ compute
-the amount of insecticide used to spraying a block. Lastly, consider the maximum
-amount of insecticide  available ($I_{max}$), and the maximum time  of the route
-($T_{max}$).
+We set the \gls{dparp}  entry as a tuple ($G', s, t, B,  \lambda, \xi, f^T, f^I,
+i_{max}, T_{max}$).  Each arc contains  the values of dengue  cases ($\lambda$),
+and distance ($\xi$). A  time function $f^T$ computes the time  to travel an arc
+($f^T_{ij}$)  and the  time to  visit all  the arcs  of a  block ($f^T_b$).  The
+function $f^I_b$  computes the amount of  insecticide used to spraying  a block.
+Lastly,  consider  the available  amount  of  insecticide ($I_{max}$),  and  the
+maximum time of the route ($T_{max}$).
 
-A feasible route of \gls{dparp} can omit the cycles that make up a block, i. e.,
-if the model consider  a block as sprayed, the route must  contains at least one
-vertex from the block visited by the route. This approach takes advantage of the
-nebulizer pulverization pattern presented for  this problem, that must cover all
-the  arcs  before  start  to  nebulize   another  block.  Next,  we  present  a
-single-vehicle \gls{ilp} formulation for the \gls{dparp}.
+In the proposed model, in order to spray a block it is sufficient that the route
+contains at least one  vertex from the same block. This is  only possible due to
+the block-visitation pattern (Figure \ref{fig:travel-pattern}), that states that
+all the arcs of  a block must be sprayed before starting  another block. In this
+case,  the traversed  distance, elapsed  time,  prize collected,  and amount  of
+insecticide used to spray the block are consolidated by appropriate terms in the
+objective  function and  constraints. This  is better  explained next,  where we
+present an \gls{ilp} formulation for the \gls{dparp}.
+\newline
 
-\newpage
-\subsection{Single-vehicle IP formulation}
+\subsection{IP formulation}
 
-Define the following variables:
+Consider the following variables:
 
 \begin{itemize}
   \item $x_{ij}$: A binary variable that indicates whether the arc $(i, j) \in
-    A'$ belongs to the route from $s$ to $t$;
+    A'$ belongs to the route;
   \item $y_{ib}$: A binary variable that is valued 1 if the vertex $i \in V$ is
     used as start point to spraying the block $b \in B(i)$; 
 \end{itemize}
@@ -338,127 +348,130 @@ With these variables, the \gls{dparp} \gls{ilp} formulation reads:
 
 Each feasible solution for the \gls{ilp} model is a route starting at vertex $s$
 and ending  in $t$  obeying the  limits of time  and insecticide.  The objective
-function  \eqref{eq:of} maximizes  the profit  of each  arc in  a block,  while
-minimizes       the      number       of      used       arc.      Constraints
-\eqref{eq:s-all}-\eqref{eq:flow-conservation} enforces flow conservation at each
-vertex. The constraints  \eqref{eq:max-time} limit the maximum time  used in the
-route,  considering  a  different  velocity to  spraying  a  block.  Constraints
-\eqref{eq:max-insecticide}   limits  the   amount  of   insecticide  used.   The
+function \eqref{eq:of} maximizes  the prize of each arc in  a block. Constraints
+\eqref{eq:s-all}-\eqref{eq:flow-conservation} enforce flow  conservation at each
+vertex. The  constraints \eqref{eq:max-time} limit  the time used by  the route,
+considering  different velocities  for  when  the vehicle  is  spraying or  not.
+Constraints  \eqref{eq:max-insecticide} limits  the amount  of insecticide.  The
 constraints \eqref{eq:max-attend} and \eqref{eq:in-path} ensure that at most one
-vertex is used as start point to spraying  a block, and this vertices must be in
-the   final  route.   Constraints  \eqref{eq:subtour-elimination}   are  subtour
-elimination, ensuring the connectivity of the arcs  in route when it is used to
-spraying at  least one block. Constraints  \eqref{eq:dom-x}-\eqref{eq:dom-y} set
-the domain of the variables.
+vertex   is   used  as   starting   point   to   spray  a   block.   Constraints
+\eqref{eq:subtour-elimination} are subtour elimination constraints, ensuring the
+connectivity of the route. Constraints \eqref{eq:dom-x}-\eqref{eq:dom-y} set the
+domain of the variables. \newline
 
 \section{Instance Generation} \label{sec:instance-generation}
 
 The first  step in generating instances  for the \gls{dparp} is  the creation of
-roads and  highways. This work  adopted the maps  available in the  project open
+the street  network. This work  adopted the maps  available in the  project open
 Street Maps (OSM) \citep{haklay:2008}, which  is a collaborative mapping project
 to create a free  and editable map of the world. Since  OSM allows returning GPS
-coordinates of  each vertex, we  use this information  to create the  map blocks
-cycles in clockwise orientation, since the  nebulizer in the vehicle always have
-to  point to  right and  must cover  all  the streets  of a  block before  start
-visiting the next.
+coordinates of each vertex, we use this information to create the street blocks,
+and their corresponding directed cycles in clockwise orientation.
 
-The set  of instances  contains 39  instances based on  notified cases  from the
+The set  of instances  contains 39  scenarios based on  notified cases  from the
 cities of  Alto Santo and  Limoeiro do  Norte, in the  state of Ceará  - Brazil.
-These  notification were  obtained from  the Information  System for  Notifiable
+These notifications  were obtained  from the  Information System  for Notifiable
 Diseases (SINAN) \citep{laguardia:2004}, from  the years of 2015-2021, including
-information about addresses  of the patients. The addresses were  applied in the
-library  OSMnx \citep{boeing:2017}  in order  to obtain  geocodes (latitude  and
-longitude),  and mapping  it to  blocks  as the  number  of cases  in the  arcs
-(streets). The OSMnx receives as input a  radius size to create the graph from a
-map, the arcs are the streets of  the map and the vertices are the intersection
-of  two or  more streets,  as  shown in  Figure \ref{fig:graph-examples},  where
-Figures (a)  and (b) are example  graphs obtained from Alto  Santo and Limoeiro,
-respectively, with  radius value equal to  1000. Also, it is  necessary that the
-address sought has been reported in  OSM to be possible retrieve the geolocation
-data. After these steps, we can define each  block of the graph as a polygon and
-execute an  algorithm that verifies  if the  point (geolocation) belongs  to any
-polygon (block).
+information about the  addresses of the patients. The addresses  were applied in
+the library OSMnx \citep{boeing:2017} in  order to obtain geocodes (latitude and
+longitude), and map them to blocks as the number of cases in the arcs (streets).
+The OSMnx receives  as input a radius size  to create the graph from  a map. The
+arcs are the streets of the map and  the vertices are the intersection of two or
+more streets,  as shown  in Figure \ref{fig:graph-examples}.  Each block  of the
+graph  is  defined  as a  polygon,  and  an  algorithm  verifies if  the  Dengue
+notification collocation belongs to any polygon (block).
+\newline
 
 \begin{figure}[!ht]
   \begin{minipage}[c]{.6\textwidth}
-    \includegraphics[width=6cm, height=5cm]{alto-santo-osm.png} \\
+    \includegraphics[width=7cm, height=6cm]{alto-santo-osm.png} \\
     (a) Map of Alto Santo from OSM.
   \end{minipage}
   % \quad
   \begin{minipage}[c]{.6\textwidth}
-    \includegraphics[width=6cm, height=5cm]{limoeiro-osm.png} \\
+    \includegraphics[width=7cm, height=6cm]{limoeiro-osm.png} \\
     (b) Map of Limoeiro from OSM.
   \end{minipage}
   \\
   \begin{minipage}[c]{.6\textwidth}
-    \includegraphics[width=6cm, height=5cm]{graph-alto-santo.png} \\
-    (a) Example graph of Alto Santo.
+    \includegraphics[width=7cm, height=6cm]{graph-alto-santo.png} \\
+    (a) Graph of Alto Santo.
   \end{minipage}
   % \quad
   \begin{minipage}[c]{.6\textwidth}
-    \includegraphics[width=6cm, height=5cm]{graph-limoeiro.png} \\
-    (b) Example graph of Limoeiro.
+    \includegraphics[width=7cm, height=6cm]{graph-limoeiro.png} \\
+    (b) Graph of Limoeiro.
   \end{minipage}
-  \caption{\label{fig:graph-examples} Example of graphs with radius 1000.}
+  \caption{\label{fig:graph-examples} Example of graphs with 1000 meters radius.}
 \end{figure}
+
+Table \ref{tab:real-instances} contains the instances  of the generated set. The
+first  column is  the  instance identification,  each  containing the  following
+information: name of the city, size of  the map, and year of the notified cases,
+respectively. The second to fourth columns are the number of vertices, arcs, and
+blocks. Column  ``Notified Cases'' present the  total number of cases  mapped in
+the graph. Lastly,  the column ``Blocks with Cases'' contains  the proportion of
+street blocks that have notified Dengue cases.
+
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
-% \begin{table}[!ht]
-% \centering
-% \small{%
-% \begin{tabular}{lrrrrr}
-% \hline
-% \multicolumn{1}{c}{\textbf{instance}} &
-%   \multicolumn{1}{c}{\textbf{$|V|$}} &
-%   \multicolumn{1}{c}{\textbf{$|A|$}} &
-%   \multicolumn{1}{c}{\textbf{$|B|$}} &
-%   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Notified\\ Cases\end{tabular}}} &
-%   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Blocks with\\ Cases (\%)\end{tabular}}} \\ \hline
-% notified-alto-santo-1000-2016 & 179  & 499  & 73  & 180   & 14 \\
-% notified-alto-santo-1000-2017 & 179  & 499  & 73  & 939   & 37 \\
-% notified-alto-santo-1000-2018 & 179  & 499  & 73  & 947   & 37 \\
-% notified-alto-santo-1000-2019 & 179  & 499  & 73  & 947   & 37 \\
-% notified-alto-santo-1000-2020 & 179  & 499  & 73  & 982   & 37 \\
-% notified-alto-santo-1000-2021 & 179  & 499  & 73  & 1056  & 37 \\ \hline
-% notified-alto-santo-2000-2016 & 253  & 684  & 88  & 126   & 9  \\
-% notified-alto-santo-2000-2017 & 253  & 684  & 88  & 832   & 30 \\
-% notified-alto-santo-2000-2018 & 253  & 684  & 88  & 832   & 30 \\
-% notified-alto-santo-2000-2019 & 253  & 684  & 88  & 832   & 30 \\
-% notified-alto-santo-2000-2020 & 253  & 684  & 88  & 861   & 30 \\
-% notified-alto-santo-2000-2021 & 253  & 684  & 88  & 945   & 31 \\ \hline
-% notified-alto-santo-3000-2016 & 353  & 946  & 114 & 163   & 9  \\
-% notified-alto-santo-3000-2017 & 353  & 946  & 114 & 952   & 25 \\
-% notified-alto-santo-3000-2018 & 353  & 946  & 114 & 952   & 25 \\
-% notified-alto-santo-3000-2019 & 353  & 946  & 114 & 952   & 25 \\
-% notified-alto-santo-3000-2020 & 353  & 946  & 114 & 988   & 25 \\
-% notified-alto-santo-3000-2021 & 353  & 946  & 114 & 1095  & 25 \\ \hline
-% notified-limoeiro-1000-2015   & 372  & 1063 & 152 & 91    & 8  \\
-% notified-limoeiro-1000-2016   & 372  & 1063 & 152 & 127   & 11 \\
-% notified-limoeiro-1000-2017   & 372  & 1063 & 152 & 245   & 17 \\
-% notified-limoeiro-1000-2018   & 372  & 1063 & 152 & 253   & 17 \\
-% notified-limoeiro-1000-2019   & 372  & 1063 & 152 & 337   & 20 \\
-% notified-limoeiro-1000-2020   & 372  & 1063 & 152 & 899   & 30 \\
-% notified-limoeiro-1000-2021   & 372  & 1063 & 152 & 921   & 32 \\ \hline
-% notified-limoeiro-2000-2015   & 980  & 2866 & 443 & 864   & 7  \\
-% notified-limoeiro-2000-2016   & 980  & 2866 & 443 & 1673  & 9  \\
-% notified-limoeiro-2000-2017   & 980  & 2866 & 443 & 2603  & 12 \\
-% notified-limoeiro-2000-2018   & 980  & 2866 & 443 & 2686  & 13 \\
-% notified-limoeiro-2000-2019   & 980  & 2866 & 443 & 4334  & 14 \\
-% notified-limoeiro-2000-2020   & 980  & 2866 & 443 & 10852 & 21 \\
-% notified-limoeiro-2000-2021   & 980  & 2866 & 443 & 11515 & 22 \\ \hline
-% notified-limoeiro-3000-2015   & 1212 & 3497 & 517 & 840   & 5  \\
-% notified-limoeiro-3000-2016   & 1212 & 3497 & 517 & 1692  & 8  \\
-% notified-limoeiro-3000-2017   & 1212 & 3497 & 517 & 2587  & 11 \\
-% notified-limoeiro-3000-2018   & 1212 & 3497 & 517 & 2660  & 11 \\
-% notified-limoeiro-3000-2019   & 1212 & 3497 & 517 & 4288  & 12 \\
-% notified-limoeiro-3000-2020   & 1212 & 3497 & 517 & 10886 & 19 \\
-% notified-limoeiro-3000-2021   & 1212 & 3497 & 517 & 11581 & 20 \\ \hline
-% \end{tabular}%
-% }
-% \caption{Real Instances}
-% \label{tab:real-instances}
-% \end{table}
+\begin{table}[!ht]
+\centering
+\normalsize{%
+\begin{tabular}{lrrrrr}
+\hline
+\multicolumn{1}{c}{\textbf{instance}} &
+  \multicolumn{1}{c}{\textbf{$|V|$}} &
+  \multicolumn{1}{c}{\textbf{$|A|$}} &
+  \multicolumn{1}{c}{\textbf{$|B|$}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Notified\\ Cases\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Blocks with\\ Cases (\%)\end{tabular}}} \\ \hline
+notified-alto-santo-1000-2016 & 179  & 499  & 73  & 180   & 14 \\
+notified-alto-santo-1000-2017 & 179  & 499  & 73  & 939   & 37 \\
+notified-alto-santo-1000-2018 & 179  & 499  & 73  & 947   & 37 \\
+notified-alto-santo-1000-2019 & 179  & 499  & 73  & 947   & 37 \\
+notified-alto-santo-1000-2020 & 179  & 499  & 73  & 982   & 37 \\
+notified-alto-santo-1000-2021 & 179  & 499  & 73  & 1056  & 37 \\ \hline
+notified-alto-santo-2000-2016 & 253  & 684  & 88  & 126   & 9  \\
+notified-alto-santo-2000-2017 & 253  & 684  & 88  & 832   & 30 \\
+notified-alto-santo-2000-2018 & 253  & 684  & 88  & 832   & 30 \\
+notified-alto-santo-2000-2019 & 253  & 684  & 88  & 832   & 30 \\
+notified-alto-santo-2000-2020 & 253  & 684  & 88  & 861   & 30 \\
+notified-alto-santo-2000-2021 & 253  & 684  & 88  & 945   & 31 \\ \hline
+notified-alto-santo-3000-2016 & 353  & 946  & 114 & 163   & 9  \\
+notified-alto-santo-3000-2017 & 353  & 946  & 114 & 952   & 25 \\
+notified-alto-santo-3000-2018 & 353  & 946  & 114 & 952   & 25 \\
+notified-alto-santo-3000-2019 & 353  & 946  & 114 & 952   & 25 \\
+notified-alto-santo-3000-2020 & 353  & 946  & 114 & 988   & 25 \\
+notified-alto-santo-3000-2021 & 353  & 946  & 114 & 1095  & 25 \\ \hline
+notified-limoeiro-1000-2015   & 372  & 1063 & 152 & 91    & 8  \\
+notified-limoeiro-1000-2016   & 372  & 1063 & 152 & 127   & 11 \\
+notified-limoeiro-1000-2017   & 372  & 1063 & 152 & 245   & 17 \\
+notified-limoeiro-1000-2018   & 372  & 1063 & 152 & 253   & 17 \\
+notified-limoeiro-1000-2019   & 372  & 1063 & 152 & 337   & 20 \\
+notified-limoeiro-1000-2020   & 372  & 1063 & 152 & 899   & 30 \\
+notified-limoeiro-1000-2021   & 372  & 1063 & 152 & 921   & 32 \\ \hline
+notified-limoeiro-2000-2015   & 980  & 2866 & 443 & 864   & 7  \\
+notified-limoeiro-2000-2016   & 980  & 2866 & 443 & 1673  & 9  \\
+notified-limoeiro-2000-2017   & 980  & 2866 & 443 & 2603  & 12 \\
+notified-limoeiro-2000-2018   & 980  & 2866 & 443 & 2686  & 13 \\
+notified-limoeiro-2000-2019   & 980  & 2866 & 443 & 4334  & 14 \\
+notified-limoeiro-2000-2020   & 980  & 2866 & 443 & 10852 & 21 \\
+notified-limoeiro-2000-2021   & 980  & 2866 & 443 & 11515 & 22 \\ \hline
+notified-limoeiro-3000-2015   & 1212 & 3497 & 517 & 840   & 5  \\
+notified-limoeiro-3000-2016   & 1212 & 3497 & 517 & 1692  & 8  \\
+notified-limoeiro-3000-2017   & 1212 & 3497 & 517 & 2587  & 11 \\
+notified-limoeiro-3000-2018   & 1212 & 3497 & 517 & 2660  & 11 \\
+notified-limoeiro-3000-2019   & 1212 & 3497 & 517 & 4288  & 12 \\
+notified-limoeiro-3000-2020   & 1212 & 3497 & 517 & 10886 & 19 \\
+notified-limoeiro-3000-2021   & 1212 & 3497 & 517 & 11581 & 20 \\ \hline
+\end{tabular}%
+}
+\caption{Real instances information.}
+\label{tab:real-instances}
+\end{table}
 
+\newpage
 \section{Computational Results} \label{sec:computational-results}
 
 The model  was implemented  in C++,  compiled with GCC  version 7.5.0  using the
@@ -466,37 +479,33 @@ optimization level -O3. The experiments were  carried out on an Intel(R) Xeon(R)
 CPU E5-2630  v4 processor with 10  cores of 2.20 GHz  each and 64Gb of  RAM. The
 execution occurred on a 64-bit Ubuntu 18.04 Linux operating system. The full set
 of instances and  experimental results obtained in this work  can be accessed at
-\href{www.ic.unicamp.br/~fusberti/problems/dengue-arp}{www.ic.unicamp.br/{\midtilde}fusberti/problems/dengue-arp}.
+\href{https://github.com/cvaraujo/instances-dengue-ARP}{https://github.com/cvaraujo/instances-dengue-ARP}.
 
 The  \gls{dparp}  \gls{ilp}  formulation  was implemented  using  Gurobi  solver
 version 9.5.1, maintaining  the default settings of its  parameters. The maximum
-resolution  time for  each instance  was limited  to 3600  seconds. The  vehicle
-velocity when  the nebulizer is  activated is $250m/m$  (approximately $15km/h$)
-and $21km/h$  while deactivated. The  maximum time  of the route  ($T_{max}$) is
-limited by 120 minutes, since this value represents the optimal interval time to
-apply  insecticide  in  the  morning  or  afternoon.  The  amount  of  available
-insecticide was 4000$ml$, using $75ml$ per  meter sprayed, this value ensures no
-redundancy between time and insecticide constraints.
+solution  time for  each  instance  was limited  to  3600  seconds. The  vehicle
+velocity when the nebulizer is activated is $250$ meters$/$minute (approximately
+$15km/h$)  and  $21km/h$  while  deactivated.  The maximum  time  of  the  route
+($T_{max}$) is  limited by 120 minutes  since this value represents  the optimal
+interval time  to apply insecticide in  the morning or afternoon.  The amount of
+available insecticide was 4000$ml$, using $75ml$ per meter sprayed.
 
 Table~\ref{tab:model-results} exhibits  the results of the  \gls{ilp} model. The
-first column  is the  instance identification, each  containing three  pieces of
-information: name  of city,  size of the  map, and year  of the  notified cases,
-respectively. Second  to fourth columns  are the  number of vertices,  arcs and
+first  column is  the  instance identification,  each  containing the  following
+information: Name of the city, size of  the map, and year of the notified cases,
+respectively. The second to fourth columns are the number of vertices, arcs, and
 blocks, respectively. Columns ``LB'' and ``UB'' present the ``Lower Bound (LB)''
 (dual) and ``Upper  Bound (UB)'' (primal) for each instance.  The ``gap $(\%)$''
 column  displays  the relative  gap  between  lower  and upper  bounds.  Columns
-``Nodes'' indicates the number of Gurobi nodes. The last column display the time
-in seconds needed  to solve the model.  The acronym TLE stands  for ``time limit
-exceeded'',  meaning  that  the  solver was  interrupted  without  reaching  the
+``Nodes'' indicates  the number of  Gurobi nodes.  The last column  displays the
+time in  seconds needed to  solve the model. The  acronym TLE stands  for ``time
+limit exceeded'', meaning  that the solver was interrupted  without reaching the
 optimum. The lines highlighted in dark gray (\crule[gr]{3mm}{3mm}) represent the
 instances in which the optimality was proved. The rows highlighted in light gray
 (\crule[lgr]{3mm}{3mm}) correspond to the instances in which a feasible solution
 was found, but the duality gap could not be closed.
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+
 \begin{table}[!ht]
 \centering
 \resizebox{\textwidth}{!}{%
@@ -574,15 +583,15 @@ notified-limoeiro-2000-2019   & 980  & 2866 & 443 & 4 187  & 4 187  & 0,0  & 14 
 \rowcolor[HTML]{C0C0C0} 
 notified-limoeiro-2000-2020   & 980  & 2866 & 443 & 52     & 10 455 & 99,5 & 150 100 & \cellcolor[HTML]{C0C0C0}TLE \\
 \rowcolor[HTML]{9B9B9B} 
-{\color[HTML]{333333} notified-limoeiro-2000-2021} &
-  {\color[HTML]{333333} 980} &
-  {\color[HTML]{333333} 2866} &
-  {\color[HTML]{333333} 443} &
-  {\color[HTML]{333333} 11 096} &
-  {\color[HTML]{333333} 11 096} &
-  {\color[HTML]{333333} 0,0} &
-  {\color[HTML]{333333} 21 488} &
-  {\color[HTML]{333333} 151,3} \\ \hline
+{ notified-limoeiro-2000-2021} &
+  {980} &
+  {2866} &
+  {443} &
+  {11 096} &
+  {11 096} &
+  {0,0} &
+  {21 488} &
+  {151,3} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 notified-limoeiro-3000-2015   & 1212 & 3497 & 517 & 693    & 840    & 17,5 & 123 813 & \cellcolor[HTML]{C0C0C0}TLE \\
 \rowcolor[HTML]{C0C0C0} 
@@ -604,37 +613,49 @@ notified-limoeiro-3000-2021   & 1212 & 3497 & 517 & 11 098 & 11 098 & 0,0  & 2 3
 \end{table}
 
 In Table \ref{tab:model-results}, it is noticed that the \gls{ilp} model reached
-the optimum for the  18 instances from the city of Alto  Santo, that contains at
-most 353 vertices, and 946 arcs. The average time for the 18 instances in which
-the optimal value were obtained was 992  seconds, and the number of Gurobi nodes
-is high, being on average 135.338. For the other 21 instances in which the model
-did not close the  duality gap, the distance of the bounds  was less than $15\%$
-in  18 cases,  obtaining  gaps above  $90\%$  for only  three  instances of  the
-benchmark. Since  the subtour  elimination constraints were  applied when  a new
-feasible solution  was founded,  the model  tends to generate  a high  number of
+the optimum  for 31 instances,  being all  the 18 from  the city of  Alto Santo,
+which contains  at most  353 vertices  and 946  arcs. From  the 21  instances of
+Limoeiro, the optimal solution was reached for 13, some containing 1212 vertices
+and 3497 arcs. The average time for  the 31 instances in which the optimal value
+was  obtained was  $128.4$, and  the number  of Gurobi  nodes is  low, being  on
+average $22.356$, and for 24 instances less than $750$ nodes.
+
+For the other 8  instances in which the model did not  close the optimality gap,
+the distance of  the bounds was less  than $1\%$ in two cases,  less than $18\%$
+for  the other  2, and  obtaining higher  gaps for  only four  instances of  the
+benchmark.  Since the  sub-tour  elimination constraints  were  applied as  lazy
+constraints, it  was expected  that the  model would generate  a high  number of
 Gurobi nodes in the branch-and-bound tree.
 
+Considering the fact that we solving  real-world instances added to the increase
+in the number of  vertices and arcs, there is an increase in  the time needed to
+compute the optimal solution. It is also  difficult for the model to improve the
+lower bound, and consequently close the gap, on four of the largest instances. A
+factor that could contribute to this  difficulty is the distribution of notified
+Dengue cases in the street blocks of the instance.
+
+\newpage
 \section{Conclusions} \label{sec:conclusions}
 
-This  work  proposed,  formulated,  and  provide an  \gls{ilp}  for  the  Dengue
+This  work  proposed, formulated,  and  provided  an  \gls{ilp} for  the  Dengue
 Prize-collecting  Arc Routing  Problem (\gls{dparp}),  which is  the problem  of
 generating routes for the spraying vehicles. The experiments were conducted on a
 benchmark of instances based on the cities of Alto Santo and Limoeiro, and using
-real notification  cases from the years  of 2015-2021. The \gls{ilp}  model were
-capable of generating lower and upper bounds for all instances of the set, being
-18 of  them optimal results. The  proposed methodology has a  high potential for
-reducing  routing  costs  and  contribute  to a  more  efficient  allocation  of
+real  notification cases  from  the  years 2015-2021.  The  \gls{ilp} model  was
+capable  of generating  lower and  upper bounds  for all  instances of  the set,
+attaining 31  optimal solutions. The  proposed methodology has a  high potential
+for reducing  routing costs and  contributes to  a more efficient  allocation of
 resources  concerning the  control of  arboviral diseases,  which is  especially
 relevant in municipalities with constrained budgets.
 
-As future works, it is possible to develop new cut constraints aiming to improve
-the model,  developing new  exact and heuristic  methodologies, and  obtain more
-real  data from  another  cities.  Furthermore, there  is  relevant to  consider
-variants  of  the \gls{dparp},  considering  for  example, fleets  of  vehicles,
-multiple turns to apply the insecticide, and uncertainty parameters, such as the
-efficiency of the insecticide when applied inside different time windows.
+In future works, it is possible to develop new cut constraints aiming to improve
+the  model, and  develop new  exact and  heuristic methodologies.  Moreover, the
+model  could be  tested  with  real data  from  other  cities. Another  relevant
+research is  to consider  variants of  the \gls{dparp},  considering a  fleet of
+vehicles, multiple turns  to apply the insecticide,  and uncertainty parameters,
+such  as the  efficiency  of  the insecticide  when  applied  in different  time
+windows.
 
-\newpage
 ~\\
 \bibliographystyle{sbpo}
 \bibliography{exemplo-latex}
